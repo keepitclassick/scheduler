@@ -10,14 +10,14 @@ export default function InterviewList(props) {
     <h4 className="interviewers__header text--light">{props.name}</h4>
     <ul className="interviewers__list">
       {props.interviewers.map(interviewer => 
-        <InterviewerListItem
-          key={interviewer.id}
-          id={interviewer.id}
-          name={interviewer.name}
-          avatar={interviewer.avatar}
-          setInterviewer={() => props.setInterviewer(interviewer.id)}
-          selected={interviewer.id === props.interviewer}
-        />)}</ul>
+        <InterviewerListItem 
+        key={interviewer.id}
+        name={interviewer.name}
+        avatar={interviewer.avatar}
+        selected={interviewer.id === props.value}
+        setInterviewer={() => props.onChange(interviewer.id)}    
+      />
+        )}</ul>
   </section>
   )
 };
