@@ -5,7 +5,8 @@ import "components/Application.scss";
 import DayList from "./DayList"
 import Appointment from "components/Appointment";
 import axios from "axios";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors"
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors"
+import useVisualMode from "hooks/useVisualMode"
 
 
 
@@ -36,12 +37,14 @@ const appointmentsForDay = getAppointmentsForDay(state, state.day);
   const appointmentList = appointmentsForDay.map( appointment => {
     const interview = getInterview(state, appointment.interview);
 
+    const interviewersForDay = getInterviewersForDay(state, state.day);
     return (
       <Appointment
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
         interview={interview}
+        interviewers={interviewersForDay}
       />
     );
   });
