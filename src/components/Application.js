@@ -28,9 +28,24 @@ export default function Application(props) {
     })
   }, []);
 
-const setDay = day => setState({ ...state, day });
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+   
+  setState({...state, appointments});
 
-console.log("state",state.interviewers)
+  console.log(id, interview);
+   
+ 
+  }
+
+const setDay = day => setState({ ...state, day });
 
 const appointmentsForDay = getAppointmentsForDay(state, state.day);
 
@@ -45,9 +60,12 @@ const appointmentsForDay = getAppointmentsForDay(state, state.day);
         time={appointment.time}
         interview={interview}
         interviewers={interviewersForDay}
+        bookInterview={bookInterview}
       />
     );
   });
+
+  
 
   return (
     <main className="layout">
