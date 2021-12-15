@@ -6,19 +6,19 @@ Interview Scheduler is a single page React application that allows users to book
 
 *Schedule page showing appointments*
 
-!["Screenshot main page Monday selected"]()
+!["Screenshot showing appointments"](https://github.com/keepitclassick/scheduler/blob/master/public/images/appointmentShow.jpeg?raw=true)
 
 *Schedule page showing new appointment form*
 
-!["Screenshot of main page with new appointment form"]()
+!["Screenshot of main page with new appointment form"](https://github.com/keepitclassick/scheduler/blob/master/public/images/newInterviewForm.jpeg?raw=true)
 
 *Schedule page showing confirmation message before an appointment is deleted*
 
-!["Screenshot of delete confirmation message"]()
+!["Screenshot of delete confirmation message"](https://github.com/keepitclassick/scheduler/blob/master/public/images/delete.jpeg?raw=true)
 
-*Schedule page showing appointment on hover (displaying Edit and Delete buttons)*
+*Schedule page showing error for missing infromation*
 
-!["Screenshot of hovered appointment"]()
+!["Missing infromation error](https://github.com/keepitclassick/scheduler/blob/master/public/images/missingInfoError.jpeg?raw=true)
 
 
 ## Setup
