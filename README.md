@@ -42,14 +42,7 @@ npm test
 ```sh
 npm run storybook
 ```
-## Dependencies
+##Happy Scheduling!
 
-- axios
-- classnames
-- normalize.css
-- react
-- react-dom
-- react-scripts
 
-#### Enjoy! 
 
