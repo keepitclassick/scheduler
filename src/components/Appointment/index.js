@@ -60,7 +60,7 @@ export default function Appointment(props) {
       {mode === EDITING && <Form name={props.interview.student} interviewer={props.interview.interviewer.id} interviewers={props.interviewers} onCancel={() => transition(SHOW)} onSave={save} />}
       {mode === ERROR_DELETE && <Error message= 'There was an error deleting your appointment. Please try again later.' onClose={() => back()}/>}
       {mode === ERROR_SAVE && <Error message= 'There was an error saving your appointment. Please try again later.' onClose={() => back()}/>}
-      {mode === ERROR_MISSING && <Error message= 'Student name cannot be blank' onClose={() => back()}/>}
+      {mode === ERROR_MISSING && <Error message= 'Please enter your name and select an interviewer' onClose={() => back()}/>}
       {mode === SAVING && <Status message= 'Saving'/>}
       {mode === DELETING && <Status message= 'Deleting' />}
       
