@@ -16,11 +16,6 @@ Interview Scheduler is a single page React application that allows users to book
 
 !["Screenshot of delete confirmation message"](https://github.com/keepitclassick/scheduler/blob/master/public/images/delete.jpeg?raw=true)
 
-*Schedule page showing error for missing infromation*
-
-!["Missing infromation error](https://github.com/keepitclassick/scheduler/blob/master/public/images/missingInfoError.jpeg?raw=true)
-
-
 ## Setup
 
 Install dependencies with `npm install`.
