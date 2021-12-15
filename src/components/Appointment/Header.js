@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Header(props) {
-  const appointmentVal = props.time ? "Appointment at " : "No appointments"
 
   return (
   <header className="appointment__time">

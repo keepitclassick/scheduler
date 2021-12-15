@@ -21,6 +21,7 @@ export default function Appointment(props) {
   const EDITING = "EDITING";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
+  const ERROR_MISSING = "ERROR_MISSING";
 
   const { mode, transition, back } = useVisualMode( props.interview? SHOW : EMPTY );
 
@@ -30,10 +31,14 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    if(!interview.interviewer || !interview.student){
+      transition(ERROR_MISSING, true)
+    }else{
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true));
+    }
   }
 
 
@@ -55,6 +60,7 @@ export default function Appointment(props) {
       {mode === EDITING && <Form name={props.interview.student} interviewer={props.interview.interviewer.id} interviewers={props.interviewers} onCancel={() => transition(SHOW)} onSave={save} />}
       {mode === ERROR_DELETE && <Error message= 'There was an error deleting your appointment. Please try again later.' onClose={() => back()}/>}
       {mode === ERROR_SAVE && <Error message= 'There was an error saving your appointment. Please try again later.' onClose={() => back()}/>}
+      {mode === ERROR_MISSING && <Error message= 'Student name cannot be blank' onClose={() => back()}/>}
       {mode === SAVING && <Status message= 'Saving'/>}
       {mode === DELETING && <Status message= 'Deleting' />}
       

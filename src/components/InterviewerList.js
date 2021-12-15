@@ -1,10 +1,12 @@
 import React from 'react';
 import "components/InterviewerList.scss";
-import classNames from "classnames";
 import InterviewerListItem from './InterviewerListItem';
+import PropTypes from 'prop-types';
 
-export default function InterviewList(props) {
-
+export default function InterviewerList(props) {
+  InterviewerList.propTypes = {
+    interviewers: PropTypes.array.isRequired
+  };
   return (
     <section className="interviewers" onClick={()=>props.setInterviewer}>
     <h4 className="interviewers__header text--light">{props.name}</h4>
