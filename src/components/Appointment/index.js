@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.scss";
+
 import Header from "./Header"
 import Show from "./Show"
 import Empty from "./Empty"
@@ -7,8 +7,10 @@ import Form from "./Form"
 import Status from "./Status"
 import Confirm from "./Confirm";
 import Error from "./Error";
+
 import useVisualMode from "hooks/useVisualMode";
 
+import "./styles.scss";
 
 
 export default function Appointment(props) {
@@ -23,8 +25,10 @@ export default function Appointment(props) {
   const ERROR_DELETE = "ERROR_DELETE";
   const ERROR_MISSING = "ERROR_MISSING";
 
-  const { mode, transition, back } = useVisualMode( props.interview? SHOW : EMPTY );
+  // Custom hook to handle the visual modes of Appointment
+  const { mode, transition, back } = useVisualMode( props.interview ? SHOW : EMPTY );
 
+  // Handles the visual modes and calls the function to book interview
   function save(name, interviewer) {
     transition(SAVING);
     const interview = {
@@ -41,7 +45,7 @@ export default function Appointment(props) {
     }
   }
 
-
+// Handles the visual modes and calls the function to cancel an interview
   function deleteInterview() {
     transition(DELETING);
     props.cancelInterview(props.id)
@@ -49,7 +53,7 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_DELETE, true));
   } 
 
-
+//Conditionally renders the appropriate component for the current mode
   return (
     <article className="appointment">
       <Header time={ props.time } />

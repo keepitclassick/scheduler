@@ -12,4 +12,4 @@ export default function Status(props) {
     <h1 className="test--semi-bold">{ props.message }</h1>
   </main>
   ) 
-} 
+};

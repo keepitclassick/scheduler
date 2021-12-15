@@ -17,5 +17,5 @@ return (
    >
      {props.children}
    </button>
- );
+ )
 };

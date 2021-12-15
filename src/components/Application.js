@@ -1,12 +1,10 @@
 import React from "react";
 
-
 import "components/Application.scss";
 import DayList from "./DayList"
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay} from "helpers/selectors"
 import useApplicationData from "hooks/useApplicationData";
-
 
 
 export default function Application(props) {
@@ -29,10 +27,8 @@ const appointmentsForDay = getAppointmentsForDay(state, state.day);
         bookInterview={bookInterview}
         cancelInterview={cancelInterview}
       />
-    );
+    )
   });
-
-  
 
   return (
     <main className="layout">
@@ -60,5 +56,5 @@ const appointmentsForDay = getAppointmentsForDay(state, state.day);
         <Appointment key="last" time="5pm" />
       </section>
     </main>
-  );
-}
+  )
+};
