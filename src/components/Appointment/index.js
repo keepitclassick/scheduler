@@ -12,42 +12,42 @@ import useVisualMode from "hooks/useVisualMode";
 
 import "./styles.scss";
 
+const EMPTY = "EMPTY";
+const SHOW = "SHOW";
+const CREATE = "CREATE";
+const SAVING = "SAVING"
+const DELETING = "DELETE";
+const CONFIRM = "CONFIRM";
+const EDITING = "EDITING";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
+const ERROR_MISSING = "ERROR_MISSING";
 
 export default function Appointment(props) {
-  const EMPTY = "EMPTY";
-  const SHOW = "SHOW";
-  const CREATE = "CREATE";
-  const SAVING = "SAVING"
-  const DELETING = "DELETE";
-  const CONFIRM = "CONFIRM";
-  const EDITING = "EDITING";
-  const ERROR_SAVE = "ERROR_SAVE";
-  const ERROR_DELETE = "ERROR_DELETE";
-  const ERROR_MISSING = "ERROR_MISSING";
+  
 
   // Custom hook to handle the visual modes of Appointment
   const { mode, transition, back } = useVisualMode( props.interview ? SHOW : EMPTY );
 
   // Handles the visual modes and calls the function to book interview
   function save(name, interviewer) {
-    transition(SAVING);
     const interview = {
       student: name,
       interviewer
     };
-    if(!interview.interviewer || !interview.student){
-      transition(ERROR_MISSING, true)
-    }else{
+    transition(SAVING); 
+
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch(() => transition(ERROR_SAVE, true));
-    }
+      .catch(() => transition(ERROR_SAVE, true));  
+    
   }
+
 
 // Handles the visual modes and calls the function to cancel an interview
   function deleteInterview() {
-    transition(DELETING);
+    transition(DELETING, true );
     props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(() => transition(ERROR_DELETE, true));
@@ -67,8 +67,7 @@ export default function Appointment(props) {
       {mode === ERROR_MISSING && <Error message= 'Please enter your name and select an interviewer' onClose={() => back()}/>}
       {mode === SAVING && <Status message= 'Saving'/>}
       {mode === DELETING && <Status message= 'Deleting' />}
-      
-  
+    
     </article>
   )
 };
