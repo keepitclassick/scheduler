@@ -31,16 +31,19 @@ export default function Appointment(props) {
 
   // Handles the visual modes and calls the function to book interview
   function save(name, interviewer) {
+    transition(SAVING);
     const interview = {
       student: name,
       interviewer,
     };
-    transition(SAVING);
-
-    props
-      .bookInterview(props.id, interview)
-      .then(() => transition(SHOW))
-      .catch(() => transition(ERROR_SAVE, true));
+    if (!interview.interviewer || !interview.student) {
+      transition(ERROR_MISSING, true);
+    } else {
+      props
+        .bookInterview(props.id, interview)
+        .then(() => transition(SHOW))
+        .catch(() => transition(ERROR_SAVE, true));
+    }
   }
 
   // Handles the visual modes and calls the function to cancel an interview
